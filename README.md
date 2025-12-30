@@ -4,6 +4,21 @@ A comprehensive collection of historical forex price data stored in Parquet form
 
 Perfect for backtesting trading strategies, conducting market analysis, and financial research. Data is readily accessible and can be queried using modern analytics tools like DuckDB, ClickHouse, Polars, and DataFusion.
 
+## Data Schema
+
+Each Parquet file contains the following columns:
+
+| Column        | Type               | Description                                                         |
+|---------------|--------------------|---------------------------------------------------------------------|
+| `time`        | int64              | Unix timestamp in seconds                                           |
+| `open`        | double (float64)   | Opening price                                                       |
+| `high`        | double (float64)   | Highest price during the interval                                   |
+| `low`         | double (float64)   | Lowest price during the interval                                    |
+| `close`       | double (float64)   | Closing price                                                       |
+| `tick_volume` | int64              | Number of price ticks in the interval                               |
+| `spread`      | int32 or int64     | Spread in points (sometimes promoted to int64 by Parquet)           |
+| `real_volume` | int64              | Actual traded volume if available (otherwise may be 0 or -)         |
+
 ## Downloading All Pairs Data
 
 Download all pairs data to a destination directory using curl. Replace `/path/to/destination` with your desired path:
